@@ -1,17 +1,45 @@
-<!-- MainLayout.vue -->
-
 <template>
-  <q-layout>
-    <q-header>
+  <q-layout view="lHh Lpr lFf">
+    <!-- Navbar -->
+    <q-header elevated>
       <q-toolbar>
-        <q-btn flat dense icon="menu" @click="mostrarMenu" />
-        <q-toolbar-title>Minha Loja de Roupas</q-toolbar-title>
+        <q-btn
+          flat
+          dense
+          round
+          icon="menu"
+          @click="drawerModel = !drawerModel"
+        />
+        <q-toolbar-title>
+          Seu Aplicativo
+        </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="drawerModel" side="left">
+    <!-- Menu lateral -->
+    <q-drawer
+      v-model="drawerModel"
+      show-if-above
+      bordered
+      side="left"
+    >
       <q-list link inset-delimiter>
-        <q-item clickable v-ripple :to="{ name: 'feed-produtos' }">
+        <q-item
+          clickable
+          v-ripple
+          @click="navigateTo('pagina-inicial')"
+        >
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+          <q-item-section>Página Inicial</q-item-section>
+        </q-item>
+
+        <q-item
+          clickable
+          v-ripple
+          @click="navigateTo('feed-produtos')"
+        >
           <q-item-section avatar>
             <q-icon name="store" />
           </q-item-section>
@@ -21,8 +49,10 @@
       </q-list>
     </q-drawer>
 
-    <router-view />
-
+    <!-- Conteúdo principal -->
+    <q-page-container>
+      <router-view />
+    </q-page-container>
   </q-layout>
 </template>
 
@@ -34,8 +64,9 @@ export default {
     };
   },
   methods: {
-    mostrarMenu() {
-      this.drawerModel = !this.drawerModel;
+    navigateTo(routeName) {
+      this.$router.push({ name: routeName });
+      this.drawerModel = false; // Fechar o menu lateral após a navegação
     },
   },
 };
