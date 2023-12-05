@@ -22,6 +22,9 @@
             color="primary"
             @click="verDetalhes(produto)"
           />
+          <!-- <a href="/detail"><button>Meu Botão</button></a> -->
+
+
         </q-card-actions>
       </q-card>
     </q-container>

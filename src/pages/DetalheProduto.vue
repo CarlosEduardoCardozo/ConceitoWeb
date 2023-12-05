@@ -1,37 +1,53 @@
-<!-- DetalhesProduto.vue -->
-
 <template>
-  <q-page>
-    <q-container class="q-pa-md">
-      <q-card>
-        <q-card-section>
-          <q-img :src="produto.imagem" :alt="produto.nome" />
-        </q-card-section>
-        <q-card-section>
-          <q-card-title>{{ produto.nome }}</q-card-title>
-          <q-card-subtitle>{{ produto.preco }}</q-card-subtitle>
-        </q-card-section>
-        <q-card-section>
-          <q-paragraph>{{ produto.detalhes }}</q-paragraph>
-        </q-card-section>
-      </q-card>
-    </q-container>
-  </q-page>
+  <div class="row">
+    <div class="col-6">
+      <div class="parteimg">
+        <div class="imagem">
+          <q-img
+            src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSGox7pEYTJrho9hEqwn-O_zGLQFuuSy1Rqxx7cpGaLXQL1Yk7uVTIuK-9uGHixotqeqCBwwI0cYRQHiPcF6ALq2HIAB5FS53s7Rxttl6WZ7NGAGcia4a7n&usqp=CAE"
+          >
+          </q-img>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="description">
+        <h2>Camiseta Sufgang</h2>
+        <p>Produto Original e Autêntico Sufgang! Revenda Autorizada. - Material : 100% Algodão - Algodão pré encolhido - Estampas : Silk screen. - Tabela de tamanhos em centímetros aproximadamente </p>
+        <p>Preço: R$ 19.99</p>
+        <div class="botao">
+          <q-btn color="blue" text-color="black" label="Comprar" />
+          <q-btn color="yellow" text-color="black" label="Add Carrinho" />
+        </div>
+      </div>
+    </div>
+    <div class="calcfret">calcularfrete</div>
+  </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      produto: {
-        id: 1,
-        nome: "Camiseta Casual",
-        preco: "$22.00",
-        imagem:
-          "https://hipnoise.com.br/wp-content/uploads/2023/07/suf-verde-frente.jpg",
-        detalhes: "Descrição detalhada do produto...",
-      },
-    };
-  },
-};
-</script>
+<style>
+.parteimg {
+  padding: 6%;
+}
+.imagem {
+  color: white;
+  width: 70%; 
+  height: 100%;
+  margin-left: 6%;
+}
+.description {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+.description p{
+  width: 60%;
+}
+.calcfret {
+  padding: 10px;
+}
+.botao {
+  display: flex;
+  gap: 10px;
+}
+</style>

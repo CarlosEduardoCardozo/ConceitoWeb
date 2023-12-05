@@ -8,18 +8,14 @@ const routes = [
         name: "feed-produtos",
         component: () => import("pages/FeedProdutos.vue"),
       },
-      // {
-      //   path: "/detalhe-produto/:id",
-      //   name: "detalhe-produto",
-      //   component: () => import("pages/DetalheProduto.vue"),
-      // },
+      {
+        path: "/detalhe-produto/:id",
+        name: "detalhe-produto",
+        component: () => import("pages/DetalheProduto.vue"),
+      },
     ],
   },
-  {
-    path: "detail",
-    name: "detalhe-produto",
-    component: () => import("pages/DetalheProduto.vue"),
-  },
+ 
   // Always leave this as last one,
   // but you can also remove it
   {
