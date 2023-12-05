@@ -1,4 +1,4 @@
-<!-- DetalheProduto.vue -->
+<!-- DetalhesProduto.vue -->
 
 <template>
   <q-page>
@@ -23,12 +23,15 @@
 export default {
   data() {
     return {
-      produto: {},
+      produto: {
+        id: 1,
+        nome: "Camiseta Casual",
+        preco: "$22.00",
+        imagem:
+          "https://hipnoise.com.br/wp-content/uploads/2023/07/suf-verde-frente.jpg",
+        detalhes: "Descrição detalhada do produto...",
+      },
     };
-  },
-  created() {
-    const produtoId = this.$route.params.id;
-    this.produto = this.produtos.find((p) => p.id === parseInt(produtoId));
   },
 };
 </script>

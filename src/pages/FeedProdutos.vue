@@ -5,7 +5,7 @@
     <q-container class="q-pa-md row items-start q-gutter-md">
       <q-card v-for="produto in produtos" :key="produto.id" class="q-mb-mb">
         <q-card-section>
-          <q-img
+          <img
             :src="produto.imagem"
             :alt="produto.nome"
             style="max-height: 200px"
@@ -37,28 +37,32 @@ export default {
           id: 1,
           nome: "Camiseta Casual",
           preco: "$22.00",
-          imagem: "assets/sufgang.jpg",
+          imagem:
+            "https://hipnoise.com.br/wp-content/uploads/2023/07/suf-verde-frente.jpg",
           detalhes: "Descrição detalhada do produto...",
         },
         {
           id: 2,
           nome: "Camiseta Casual",
           preco: "$22.00",
-          imagem: "sufgang.jpg",
+          imagem:
+            "https://d3ugyf2ht6aenh.cloudfront.net/stores/002/695/075/products/preto_amarelo1-03857dd013641c8ca716847673542915-1024-1024.png  ",
           detalhes: "Descrição detalhada do produto...",
         },
         {
           id: 3,
           nome: "Camiseta Casual",
           preco: "$22.00",
-          imagem: "sufgang.jpg",
+          imagem:
+            "https://newskull.fbitsstatic.net/img/p/camiseta-sufgang-sufkidz-vermelho-91717/308797.jpg?w=504&h=756&v=no-change&qs=ignore",
           detalhes: "Descrição detalhada do produto...",
         },
-         {
-          id: 3,
+        {
+          id: 4,
           nome: "Camiseta Casual",
           preco: "$22.00",
-          imagem: "sufgang.jpg",
+          imagem:
+            "https://www.postal.com.br/img/products/camiseta-sufgang-joker-tee-off-white_1_2000.jpg",
           detalhes: "Descrição detalhada do produto...",
         },
       ],
@@ -77,7 +81,7 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  height: 120px;
+.card img {
+  height: 150px;
 }
 </style>
