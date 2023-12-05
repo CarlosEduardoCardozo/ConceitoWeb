@@ -57,7 +57,7 @@ export default {
           nome: "Camiseta Casual",
           preco: "$22.00",
           imagem:
-            "https://newskull.fbitsstatic.net/img/p/camiseta-sufgang-sufkidz-vermelho-91717/308797.jpg?w=504&h=756&v=no-change&qs=ignore",
+            "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVWxSGLR3-GDxgWSAhzr5j59Jw7lBlGRAM1c4nhjUWIvRH9z1cf7sbwHpIHooImQLEe_JSuC3Xwf4x8kOApsiaz-dz8Sp7msRN-vzTijuHPzxY7SyGPjyKoQ&usqp=CAE",
           detalhes: "Descrição detalhada do produto...",
         },
         {
@@ -73,7 +73,6 @@ export default {
   },
   methods: {
     verDetalhes(produto) {
-      // Redirecionar para a página de detalhes do produto
       this.$router.push({
         name: "detalhe-produto",
         params: { id: produto.id },

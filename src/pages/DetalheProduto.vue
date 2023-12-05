@@ -13,15 +13,45 @@
     <div class="col-6">
       <div class="description">
         <h2>Camiseta Sufgang</h2>
-        <p>Produto Original e Autêntico Sufgang! Revenda Autorizada. - Material : 100% Algodão - Algodão pré encolhido - Estampas : Silk screen. - Tabela de tamanhos em centímetros aproximadamente </p>
-        <p>Preço: R$ 19.99</p>
+        <p>
+          Produto Original e Autêntico Sufgang! Revenda Autorizada. - Material :
+          100% Algodão - Algodão pré encolhido - Estampas Silk screen. - Tabela
+          de tamanhos em centímetros aproximadamente
+        </p>
+        <p class="preco">Preço: R$ 19.99</p>
         <div class="botao">
-          <q-btn color="blue" text-color="black" label="Comprar" />
-          <q-btn color="yellow" text-color="black" label="Add Carrinho" />
+          <RouterLink to="/payment">
+            <q-btn color="green" text-color="black" label="Comprar" />
+          </RouterLink>
+          <q-btn color="blue" text-color="black" label="Add Carrinho" />
+        </div>
+        <div class="frete">
+          <p>Calcular frete</p>
+          <q-input
+            bottom-slots
+            v-model="text"
+            label="CEP"
+            counter
+            maxlength="12"
+            :dense="dense"
+          >
+            <template v-slot:before>
+              <q-icon name="flight_takeoff" />
+            </template>
+
+            <template v-slot:append>
+              <q-icon
+                v-if="text !== ''"
+                name="close"
+                @click="text = ''"
+                class="cursor-pointer"
+              />
+              <q-icon name="search" />
+            </template>
+          </q-input>
         </div>
       </div>
     </div>
-    <div class="calcfret">calcularfrete</div>
   </div>
 </template>
 
@@ -31,7 +61,7 @@
 }
 .imagem {
   color: white;
-  width: 70%; 
+  width: 70%;
   height: 100%;
   margin-left: 6%;
 }
@@ -40,7 +70,7 @@
   width: 100%;
   height: 100%;
 }
-.description p{
+.description p {
   width: 60%;
 }
 .calcfret {
@@ -49,5 +79,15 @@
 .botao {
   display: flex;
   gap: 10px;
+}
+.calcfret {
+  margin-top: 3%;
+}
+.formfrete {
+  margin-left: 30%;
+}
+.frete {
+  margin-top: 20px;
+  max-width: 240px;
 }
 </style>
