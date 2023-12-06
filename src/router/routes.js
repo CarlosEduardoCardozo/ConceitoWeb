@@ -13,12 +13,12 @@ const routes = [
         name: "detalhe-produto",
         component: () => import("pages/DetalheProduto.vue"),
       },
+      {
+        path: "/payment",
+        name: "payment-prod",
+        component: () => import("pages/PaymentProdutos.vue"),
+      },
     ],
-  },
-  {
-    path: "/payment",
-    name: "payment-prod",
-    component: () => import("pages/PaymentProdutos.vue"),
   },
   // Always leave this as last one,
   // but you can also remove it
