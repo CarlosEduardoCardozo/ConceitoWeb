@@ -1,3 +1,6 @@
+import ApiTest from 'pages/ApiTest.vue';
+
+
 const routes = [
   {
     path: "/",
@@ -18,14 +21,17 @@ const routes = [
         name: "payment-prod",
         component: () => import("pages/PaymentProdutos.vue"),
       },
+      {
+        path: 'apitest',
+        name: 'apitest',
+        component: () => import("pages/ApiTest.vue"),
+      },
     ],
   },
-  // Always leave this as last one,
-  // but you can also remove it
-  {
-    path: "/:catchAll(.*)*",
-    component: () => import("pages/ErrorNotFound.vue"),
-  },
+  // {
+  //   path: "/:catchAll(.*)*",
+  //   component: () => import("pages/ErrorNotFound.vue"),
+  // },
 ];
 
 export default routes;
