@@ -1,54 +1,59 @@
 <template>
-  <q-page-container>
+  <q-page-container class="container">
     <q-page>
-      <q-container class="q-pa-md">
-        <h1 class="text-h6">Página de Pagamento</h1>
-  
-        <payment-form @submit="processPayment" />
-  
-        <q-dialog v-model="successDialog" persistent>
-          <q-card>
-            <q-card-section class="q-pt-none">
-              <q-item-main>
-                <div class="text-h6">Pagamento bem-sucedido!</div>
-              </q-item-main>
-            </q-card-section>
-            <q-card-actions align="right">
-              <q-btn label="Fechar" color="primary" @click="closeSuccessDialog" />
-            </q-card-actions>
-          </q-card>
-        </q-dialog>
+      <q-container class="">
+        <div class="main">
+          <h1 class="text-h5 text-bold">Página de Pagamento</h1>
+          <p class="q-font-regular">Selecione o método de pagamento</p>
+
+          <q-btn @click="selectPaymentMethod('creditCard')"
+            >Cartão de Crédito</q-btn
+          >
+          <q-btn @click="selectPaymentMethod('paypal')">Pix</q-btn>
+          <q-btn @click="selectPaymentMethod('other')">Boleto</q-btn>
+
+          <div v-if="selectedMethod === 'creditCard'">
+            <CreditCardForm />
+          </div>
+          <div v-else-if="selectedMethod === 'paypal'">
+            <PixForm />
+          </div>
+          <div v-else-if="selectedMethod === 'other'">
+            <BoletoForm />
+          </div>
+        </div>
       </q-container>
     </q-page>
   </q-page-container>
-  
-    
+</template>
 
+<script>
+import CreditCardForm from "../components/CreditCardForm.vue";
+import PixForm from "../components/PixForm.vue"; // Substitua pelo caminho real do seu componente
+import BoletoForm from "../components/BoletoForm.vue"; // Substitua pelo caminho real do seu componente
 
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        successDialog: false,
-      };
+export default {
+  data() {
+    return {
+      selectedMethod: null,
+    };
+  },
+  methods: {
+    selectPaymentMethod(method) {
+      this.selectedMethod = method;
     },
-    methods: {
-      processPayment() {
+  },
+  components: {
+    CreditCardForm,
+    PixForm,
+    BoletoForm,
+  },
+};
+</script>
 
-        setTimeout(() => {
-          this.successDialog = true;
-        }, 2000);
-      },
-      closeSuccessDialog() {
-        this.successDialog = false;
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
-
-  </style>
-  
+<style>
+.container {
+  display: flex;
+  justify-content: center;
+}
+</style>
