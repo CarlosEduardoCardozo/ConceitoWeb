@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <!-- Navbar -->
-    <q-header elevated>
+    <q-header elevated class="custom-navbar" >
       <q-toolbar>
         <q-btn
           flat
@@ -71,3 +71,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.custom-navbar {
+  background-color: rgb(49, 49, 49); 
+  color: white; 
+  padding: 10px;
+}
+</style>
