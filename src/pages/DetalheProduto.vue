@@ -1,10 +1,46 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+import CamisetasService from "../../src/services/camisetas.js"
+import { useRouter, useRoute } from 'vue-router'
+
+const camiseta = ref(null)
+const route = useRoute()
+const router = useRouter()
+
+onMounted(async () => {
+  const data = await CamisetasService.getAllCamisetas()
+  const idProduto = route.params.id
+  camiseta.value = data.find(item => item.id === Number(idProduto))
+})
+
+const comprarProduto = (camiseta) => {
+  const id = camiseta.id
+  const nome = camiseta.nome
+  const valor = camiseta.valor
+  const imagem = camiseta.capa.url
+
+  router.push({
+    name: 'payment-prod',
+    query: {
+      id,
+      nome,
+      valor,
+      imagem,
+    }
+  })
+}
+</script>
+
+
 <template>
-  <div class="row">
+  <div v-if="camiseta" class="row">
     <div class="col-6">
       <div class="parteimg">
         <div class="imagem">
           <q-img
-            src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSGox7pEYTJrho9hEqwn-O_zGLQFuuSy1Rqxx7cpGaLXQL1Yk7uVTIuK-9uGHixotqeqCBwwI0cYRQHiPcF6ALq2HIAB5FS53s7Rxttl6WZ7NGAGcia4a7n&usqp=CAE"
+            :src="camiseta.capa.url"
+            alt="Imagem da Camiseta"
+            class="imgcamiseta"
           >
           </q-img>
         </div>
@@ -12,19 +48,19 @@
     </div>
     <div class="col-6">
       <div class="description">
-        <h2>Camiseta Sufgang</h2>
+        <h2>{{ camiseta.nome }}</h2>
         <p class="descricao">
           Produto Original e Autêntico Sufgang! Revenda Autorizada. - Material :
           100% Algodão - Algodão pré encolhido - Estampas Silk screen. - Tabela
           de tamanhos em centímetros aproximadamente
         </p>
-        <p class="preco">Preço: R$ 19.99</p>
+        <p class="preco">Preço: {{ camiseta.valor }}</p>
         <div class="botao">
           <q-btn
             outline
             style="color: goldenrod"
             label="Comprar"
-            @click="comprarProduto"
+            @click="comprarProduto(camiseta)"
           />
           <q-btn
             color="black"
@@ -64,77 +100,15 @@
 </template>
 
 <style>
-@media (max-width: 600px) {
-  .row {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .parteimg {
-    display: flex;
-    width: 180%;
-    margin-left: -30%;
-  }
-  .description h2 {
-    font-size: 30px;
-  }
-  .description {
-    max-width: 300px;
-  }
-  .descricao {
-    width: 10px;
-  }
+.imgcamiseta{
+  width: 70%;
+  margin-left: 20%;
 }
-.parteimg {
-  padding: 6%;
-}
-.imagem {
-  color: white;
-  width: 80%;
-  height: 100%;
-  margin-left: 6%;
-}
-.description {
-  padding: 10px;
-  width: 90%;
-  height: 100%;
-}
-.description p {
-  width: 100%;
-}
-.calcfret {
-  padding: 10px;
-}
-.botao {
-  display: flex;
-  gap: 10px;
-}
-.calcfret {
-  margin-top: 3%;
-}
-.formfrete {
-  margin-left: 30%;
-}
-.frete {
+.frete{
+  width: 40%;
   margin-top: 20px;
-  max-width: 240px;
+}
+.description{
+  width: 80%;
 }
 </style>
-
-<script>
-export default {
-  methods: {
-    comprarProduto() {
-      const idProduto = this.$route.params.id; // Obtém o ID do produto da rota
-      const nomeProduto = "Camiseta Sufgang"; // Substitua pelo nome real do produto
-      const valorProduto = "R$ 19.99"; // Substitua pelo valor real do produto
-
-      // Navega para a página de pagamento passando os detalhes do produto como parâmetros
-      this.$router.push({
-        name: "payment-prod",
-        params: { id: idProduto, nome: nomeProduto, valor: valorProduto },
-      });
-    },
-  },
-};
-</script>
