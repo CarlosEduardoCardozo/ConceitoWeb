@@ -27,7 +27,7 @@
         <q-item
           clickable
           v-ripple
-          @click="navigateTo('pagina-inicial')"
+          @click="navigateTo('homepage')"
         >
           <q-item-section avatar>
             <q-icon name="home" />

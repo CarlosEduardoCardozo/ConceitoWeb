@@ -40,7 +40,7 @@ export default {
       currentQR: '',
       showQR: false,
       timer: null,
-      remainingTime: '05:00',
+      remainingTime: '00:30',
       progress: 100
     };
   },
@@ -72,7 +72,7 @@ export default {
         const formattedSeconds = seconds.toString().padStart(2, '0');
         this.remainingTime = `${formattedMinutes}:${formattedSeconds}`;
 
-        const totalSeconds = 300; // 5 minutos
+        const totalSeconds = 30; // 5 minutos
         const remainingSeconds = (minutes * 60) + seconds;
         this.progress = Math.floor((remainingSeconds / totalSeconds) * 100);
       }, 1000);

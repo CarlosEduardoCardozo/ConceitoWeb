@@ -26,6 +26,11 @@ const routes = [
         name: 'apitest',
         component: () => import("pages/ApiTest.vue"),
       },
+      {
+        path: 'home',
+        name: 'homepage',
+        component: () => import("pages/HomePage.vue"),
+      },
     ],
   },
   // {
