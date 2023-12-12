@@ -1,15 +1,9 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <!-- Navbar -->
-    <q-header elevated class="custom-navbar" >
+    <q-header elevated class="custom-navbar">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          @click="drawerModel = !drawerModel"
-        />
+        <q-btn flat dense round icon="menu" @click="drawerModel = !drawerModel" />
         <q-toolbar-title>
           Seu Aplicativo
         </q-toolbar-title>
@@ -17,33 +11,26 @@
     </q-header>
 
     <!-- Menu lateral -->
-    <q-drawer
-      v-model="drawerModel"
-      show-if-above
-      bordered
-      side="left"
-    >
+    <q-drawer v-model="drawerModel" show-if-above bordered side="left">
       <q-list link inset-delimiter>
-        <q-item
-          clickable
-          v-ripple
-          @click="navigateTo('homepage')"
-        >
+        <q-item clickable v-ripple @click="navigateTo('homepage')">
           <q-item-section avatar>
             <q-icon name="home" />
           </q-item-section>
           <q-item-section>Página Inicial</q-item-section>
         </q-item>
 
-        <q-item
-          clickable
-          v-ripple
-          @click="navigateTo('feed-produtos')"
-        >
+        <q-item clickable v-ripple @click="navigateTo('feed-produtos')">
           <q-item-section avatar>
             <q-icon name="store" />
           </q-item-section>
           <q-item-section>Feed de Produtos</q-item-section>
+        </q-item>
+        <q-item clickable v-ripple @click="navigateTo('admin-page')">
+          <q-item-section avatar>
+            <q-icon name="build" />
+          </q-item-section>
+          <q-item-section>Página de Admin</q-item-section>
         </q-item>
         <!-- Adicione mais itens de menu conforme necessário -->
       </q-list>
@@ -74,8 +61,8 @@ export default {
 
 <style scoped>
 .custom-navbar {
-  background-color: rgb(49, 49, 49); 
-  color: white; 
+  background-color: rgb(49, 49, 49);
+  color: white;
   padding: 10px;
 }
 </style>

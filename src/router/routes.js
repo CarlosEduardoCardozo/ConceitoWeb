@@ -27,9 +27,14 @@ const routes = [
         component: () => import("pages/ApiTest.vue"),
       },
       {
-        path: 'home',
+        path: '/',
         name: 'homepage',
         component: () => import("pages/HomePage.vue"),
+      },
+      {
+        path: '/admin',
+        name: 'admin-page',
+        component: () => import("pages/AdminPage.vue"),
       },
     ],
   },
